@@ -19,6 +19,10 @@ app.use(express.static("public"));
 //connection using our db, hidden in dotenv
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "public/index.html"))
+})
+
 // app.post("/submit", ({body}, res) => {
 //   User.create(body)
 //     .then(dbUser => {
