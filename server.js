@@ -19,15 +19,15 @@ app.use(express.static("public"));
 //connection using our db, hidden in dotenv
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
-app.post("/submit", ({body}, res) => {
-  User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+// app.post("/submit", ({body}, res) => {
+//   User.create(body)
+//     .then(dbUser => {
+//       res.json(dbUser);
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
