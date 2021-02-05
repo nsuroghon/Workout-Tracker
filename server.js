@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const User = require("./seeders/seed");
+// const User = require("./seeders/seed");
 const app = express();
 
 app.use(logger("dev"));

@@ -1,5 +1,8 @@
 let mongoose = require("mongoose");
-let db = require("../models");
+// let db = require("../models");
+// ^
+// the problem is that you do need to a models folder which will hold the 
+// database schema but you have not worked on that yet
 
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
