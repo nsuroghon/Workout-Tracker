@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const User = require("./seeders/seed");
+const Workout = require("./seeders/seed");
 const app = express();
 
 app.use(logger("dev"));
@@ -20,12 +20,15 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "public/index.html"))
+  db.index.find({})
+    .then(dbIndex => {
+      res.json(dbIndex);
+    })
+    .catch(err => {
+      res.json(err);
+    });
 });
 
-app.get("/stats", (req, res) => {
-  res.sendFile(path.join(__dirname + "public/stats.html"))
-});
 
 // app.post("/submit", ({body}, res) => {
 //   User.create(body)
