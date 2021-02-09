@@ -16,11 +16,12 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //connection using our db, hidden in dotenv
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb:localhost/workout", { useNewUrlParser: true });
 
 //html route
 app.use(require("./routes/html-routes"))
 //api route
+app.use(require("./routes/api-routes"))
 
 // app.get("/", (req, res) => {
 //   db.index.find({})
