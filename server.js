@@ -23,25 +23,6 @@ app.use(require("./routes/html-routes"))
 //api route
 app.use(require("./routes/api-routes"))
 
-// app.get("/", (req, res) => {
-//   db.index.find({})
-//     .then(dbIndex => {
-//       res.json(dbIndex);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-// app.post("/submit", ({body}, res) => {
-//   User.create(body)
-//     .then(dbUser => {
-//       res.json(dbUser);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
