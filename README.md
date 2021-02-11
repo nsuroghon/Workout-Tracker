@@ -13,7 +13,7 @@
 ## Description
 The Workout Tracker app serves as a student assignment application to apply concepts studied about MongoDB, Mongoose schema and Express routing. The Workout Trackerallows users to build and track daily workouts!
 
-## Usage
+## Visit
 [Visit Workout Tracker App](https://salty-tundra-04486.herokuapp.com)
 
 ## Usage
