@@ -16,7 +16,8 @@ The Workout Tracker app serves as a student assignment application to apply conc
 Run ```npm start```
 
 ## Preview
-
+![Preview](https://github.com/nsuroghon/Workout-Tracker/blob/main/public/img/Screen%20Shot%202021-02-10%20at%207.07.30%20PM.png)
+![Preview](https://github.com/nsuroghon/Workout-Tracker/blob/main/public/img/Screen%20Shot%202021-02-10%20at%207.07.50%20PM.png)
 
 ## License
 MIT License.
