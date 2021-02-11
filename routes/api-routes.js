@@ -1,10 +1,32 @@
 let db = require("../models/workoutModel");
 let router = require("express").Router();
 
+router.get("/api/workouts", (req, res) => {
 
-//create new workout
-router.post("/api/workouts", (req, res) => {
-  db.create(req.body)
+  db.aggregate([{
+          $addFields: { totalDuration: { $sum: "$exercises.duration" } },
+      }, ])
+      .then((data) => {
+          res.json(data);
+      })
+      .catch((err) => {
+          res.status(400).json(err);
+      });
+});
+
+router.post("/api/workouts", ({ body }, res) => {
+
+  db.create(body)
+      .then((dbWorkout) => {
+          res.json(dbWorkout);
+      })
+      .catch((err) => {
+          res.status(400).json(err);
+      });
+});
+
+router.post("/api/workouts/:id", ({body}, res) => {
+  db.create(body)
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
@@ -13,19 +35,30 @@ router.post("/api/workouts", (req, res) => {
     })
 })
 
-// add exercise to workout
+router.put("/api/workouts/:id", (req, res) => {
 
-//show last workout on front page
-// router.get("/api/workouts", (req, res) => {
-//   db.create({})
-//     .then(dbWorkout => {
-//       res.json(dbWorkout);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+  db.findByIdAndUpdate({ _id: req.params.id }, { exercises: req.body })
+      .then((dbWorkout) => {
+          res.json(dbWorkout);
+      })
+      .catch((err) => {
+          res.status(400).json(err);
+      });
+});
 
-// continue workout
+router.get("/api/workouts/range", (req, res) => {
+
+    db.aggregate([{
+            $addFields: { totalDuration: { $sum: "$exercises.duration" } },
+        }])
+        .sort({ day: -1 })
+        .limit(7)
+        .then((data) => {
+            res.json(data.reverse());
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        });
+});
 
 module.exports = router;
